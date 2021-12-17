@@ -11,19 +11,13 @@ Inputs: SE Data CSV files
 Outputs: Plotly HTML map
 
 """
-
-import os
 import pandas as pd
-import numpy as np
-import geopandas as gpd
-import matplotlib.pyplot as plt
 import json
 import plotly.express as px
 import dash
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
-import plotly
 # =============================================================================
 # Read in SE Data CSVs files
 # =============================================================================
