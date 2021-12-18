@@ -125,7 +125,7 @@ def display_choropleth(value):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=False, port=8080)
 
 
 
