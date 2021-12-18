@@ -28,7 +28,7 @@ se_2015 = pd.read_csv('Data/2015/LandUse_2015.csv')[['TAZ', 'HH_IncludingGQ',
                                                 'Institutional', 'K12',
                                                 'Retail', 'Special_Commercial',
                                                 'Special_Retail']]
-se_2020 = pd.read_csv('Data/2020/Landuse_2020.csv')[['TAZ', 'HH_IncludingGQ', 
+se_2020 = pd.read_csv('Data/2020/LandUse_2020.csv')[['TAZ', 'HH_IncludingGQ', 
                                                 'Commercial', 'Industrial',
                                                 'Institutional', 'K12',
                                                 'Retail', 'Special_Commercial',
