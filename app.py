@@ -89,7 +89,7 @@ token = open("Data/.mapbox_token").read()
 
 app = dash.Dash(__name__)
 server = app.server
-app.title('CCPRC Land Use')
+app.title ='CCPRC Land Use'
 
 land_use = ["Total Households (Including GQ)", "Total Employment"]
 
