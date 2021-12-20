@@ -112,8 +112,10 @@ app.layout = dbc.Container([
     ,
         labelStyle={'display': 'inline-block'}
     )),
-    dbc.Row(dbc.Col(dcc.Graph(id="choropleth",style={'width': '90vh', 'height': '90vh'})))
-])
+    dbc.Row(
+        dbc.Col(dcc.Graph(id="choropleth"), style={"height": "100%"}))
+],
+style={"height": "100vh"})
 
 @app.callback(
     Output("choropleth", "figure"), 
