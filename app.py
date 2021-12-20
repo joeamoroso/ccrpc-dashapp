@@ -95,16 +95,16 @@ app.title ='CCPRC Land Use'
 land_use = ["Total Households (Including GQ)", "Total Employment"]
 
 app.layout = dbc.Container([
-    dbc.Col(html.H1(children='CCPRC Land Use Visualizer')),
-    dbc.Col(html.P("Land Use Variable:")),
-    dbc.RadioItems(
+    dbc.Row(dbc.Col(html.H1(children='CCPRC Land Use Visualizer'))),
+    dbc.Row(dbc.Col(html.P("Land Use Variable:"))),
+    dbc.Row(dbc.RadioItems(
         id='radio_button', 
         options=[{'label': k, 'value': k} for k in land_use],
         value=land_use[0]
     ,
         labelStyle={'display': 'inline-block'}
-    ),
-    dbc.Col(dcc.Graph(id="choropleth"), width=10, style={"height": "100%"}),
+    )),
+    dbc.Row(dbc.Col(dcc.Graph(id="choropleth",style={'width': '90vh', 'height': '90vh'}))),
 ])
 
 @app.callback(
