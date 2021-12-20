@@ -17,6 +17,7 @@ import plotly.express as px
 import dash
 from dash import dcc
 from dash import html
+import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 # =============================================================================
 # Read in SE Data CSVs files
@@ -87,23 +88,23 @@ with open('Data/GIS/CCPRC_TAZ.geojson') as f:
 token = open("Data/.mapbox_token").read()
 
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 app.title ='CCPRC Land Use'
 
 land_use = ["Total Households (Including GQ)", "Total Employment"]
 
-app.layout = html.Div([
-    html.H1(children='CCPRC Land Use'),
-    html.P("Land Use Variable:"),
-    dcc.RadioItems(
+app.layout = dbc.Container([
+    dbc.Col(html.H1(children='CCPRC Land Use Visualizer')),
+    dbc.Col(html.P("Land Use Variable:")),
+    dbc.RadioItems(
         id='radio_button', 
         options=[{'label': k, 'value': k} for k in land_use],
         value=land_use[0]
     ,
         labelStyle={'display': 'inline-block'}
     ),
-    dcc.Graph(id="choropleth"),
+    dbc.Col(dcc.Graph(id="choropleth")),
 ])
 
 @app.callback(
