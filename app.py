@@ -24,25 +24,25 @@ from dash.dependencies import Input, Output
 # =============================================================================
 
 
-se_2015 = pd.read_csv('Data/2015/LandUse_2015.csv')[['TAZ', 'HH_IncludingGQ', 'HH'
+se_2015 = pd.read_csv('Data/2015/LandUse_2015.csv')[['TAZ', 'HH_IncludingGQ', 'HH',
                                                 'Accomodations','College_University',
                                                 'Commercial', 'Industrial',
                                                 'Institutional', 'K12',
                                                 'Retail', 'Special_Commercial',
                                                 'Special_Retail']]
-se_2020 = pd.read_csv('Data/2020/LandUse_2020.csv')[['TAZ', 'HH_IncludingGQ', 'HH'
+se_2020 = pd.read_csv('Data/2020/LandUse_2020.csv')[['TAZ', 'HH_IncludingGQ', 'HH',
                                                 'Accomodations','College_University',
                                                 'Commercial', 'Industrial',
                                                 'Institutional', 'K12',
                                                 'Retail', 'Special_Commercial',
                                                 'Special_Retail']]
-se_2030 = pd.read_csv('Data/2030/LandUse_2030.csv')[['TAZ', 'HH_IncludingGQ', 'HH'
+se_2030 = pd.read_csv('Data/2030/LandUse_2030.csv')[['TAZ', 'HH_IncludingGQ', 'HH',
                                                 'Accomodations','College_University',
                                                 'Commercial', 'Industrial',
                                                 'Institutional', 'K12',
                                                 'Retail', 'Special_Commercial',
                                                 'Special_Retail']]
-se_2050 = pd.read_csv('Data/2050/LandUse_2050.csv')[['TAZ', 'HH_IncludingGQ', 'HH'
+se_2050 = pd.read_csv('Data/2050/LandUse_2050.csv')[['TAZ', 'HH_IncludingGQ', 'HH',
                                                 'Accomodations','College_University',
                                                 'Commercial', 'Industrial',
                                                 'Institutional', 'K12',
