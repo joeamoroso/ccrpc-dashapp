@@ -128,7 +128,7 @@ def display_choropleth(value):
         color_continuous_scale='Oranges',
         mapbox_style='open-street-map',
         opacity = 0.5,
-        center={"lat": 44.4, "lon": -73.2}, zoom=10,
+        center={"lat": 44.475959, "lon": -73.210382}, zoom=10,
         height = 1000,
         width=1000)
     
