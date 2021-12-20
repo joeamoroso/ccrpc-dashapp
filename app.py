@@ -89,10 +89,12 @@ token = open("Data/.mapbox_token").read()
 
 app = dash.Dash(__name__)
 server = app.server
+app.title('CCPRC Land Use')
 
 land_use = ["Total Households (Including GQ)", "Total Employment"]
 
 app.layout = html.Div([
+    html.H1(children='CCPRC Land Use')
     html.P("Land Use Variable:"),
     dcc.RadioItems(
         id='radio_button', 
@@ -125,7 +127,7 @@ def display_choropleth(value):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(port=5000)
+    app.run_server()
 
 
 
