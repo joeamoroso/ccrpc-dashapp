@@ -104,7 +104,7 @@ land_use = ["Total Households (Excluding GQ)", "Total Employment"]
 
 app.layout = dbc.Container([
     dbc.Row(dbc.Col(html.H1(children='CCPRC Land Use Visualizer'))),
-    dbc.Row(dbc.Col(html.H2("Land Use Variable:"))),
+    dbc.Row(dbc.Col(html.H3("Land Use Variable:"))),
     dbc.Row(dbc.RadioItems(
         id='radio_button', 
         options=[{'label': k, 'value': k} for k in land_use],
@@ -129,8 +129,7 @@ def display_choropleth(value):
         mapbox_style='open-street-map',
         opacity = 0.5,
         center={"lat": 44.475959, "lon": -73.210382}, zoom=10,
-        height = 1000,
-        width=1000)
+        height = 1000)
     
     fig.update_geos(fitbounds="locations", visible=False)
     fig.update_layout(
