@@ -25,21 +25,25 @@ from dash.dependencies import Input, Output
 
 
 se_2015 = pd.read_csv('Data/2015/LandUse_2015.csv')[['TAZ', 'HH_IncludingGQ', 
+                                                'Accomodations','College_University',
                                                 'Commercial', 'Industrial',
                                                 'Institutional', 'K12',
                                                 'Retail', 'Special_Commercial',
                                                 'Special_Retail']]
 se_2020 = pd.read_csv('Data/2020/LandUse_2020.csv')[['TAZ', 'HH_IncludingGQ', 
+                                                'Accomodations','College_University',
                                                 'Commercial', 'Industrial',
                                                 'Institutional', 'K12',
                                                 'Retail', 'Special_Commercial',
                                                 'Special_Retail']]
-se_2030 = pd.read_csv('Data/2030/LandUse_2030.csv')[['TAZ', 'HH_IncludingGQ', 
+se_2030 = pd.read_csv('Data/2030/LandUse_2030.csv')[['TAZ', 'HH_IncludingGQ',
+                                                'Accomodations','College_University',
                                                 'Commercial', 'Industrial',
                                                 'Institutional', 'K12',
                                                 'Retail', 'Special_Commercial',
                                                 'Special_Retail']]
-se_2050 = pd.read_csv('Data/2050/LandUse_2050.csv')[['TAZ', 'HH_IncludingGQ', 
+se_2050 = pd.read_csv('Data/2050/LandUse_2050.csv')[['TAZ', 'HH_IncludingGQ',
+                                                'Accomodations','College_University',
                                                 'Commercial', 'Industrial',
                                                 'Institutional', 'K12',
                                                 'Retail', 'Special_Commercial',
@@ -51,20 +55,24 @@ se_2030['Year'] = 2030
 se_2050['Year'] = 2050
 
 # Add Total Employment # 
-se_2015['Total Employment'] = se_2015.Commercial + se_2015.Industrial + \
-                              se_2015.Institutional + se_2015.Retail + \
+se_2015['Total Employment'] = se_2015.Accomodations + se_2015.College_University + \
+                              se_2015.Commercial + se_2015.Industrial + \
+                              se_2015.Institutional +se_2015.K12 + se_2015.Retail + \
                               se_2015.Special_Retail + se_2015.Special_Commercial
 
-se_2020['Total Employment'] = se_2020.Commercial + se_2020.Industrial + \
-                              se_2020.Institutional + se_2020.Retail + \
+se_2020['Total Employment'] = se_2020.Accomodations + se_2020.College_University + \
+                              se_2020.Commercial + se_2020.Industrial + \
+                              se_2020.Institutional + se_2020.K12 + se_2020.Retail + \
                               se_2020.Special_Retail + se_2020.Special_Commercial
 
-se_2030['Total Employment'] = se_2030.Commercial + se_2030.Industrial + \
-                              se_2030.Institutional + se_2030.Retail + \
+se_2030['Total Employment'] = se_2030.Accomodations + se_2030.College_University + \
+                              se_2030.Commercial + se_2030.Industrial + \
+                              se_2030.Institutional+ se_2030.K12 + se_2030.Retail + \
                               se_2030.Special_Retail + se_2030.Special_Commercial
 
-se_2050['Total Employment'] = se_2050.Commercial + se_2050.Industrial + \
-                              se_2050.Institutional + se_2050.Retail + \
+se_2050['Total Employment'] = se_2050.Accomodations + se_2050.College_University + \
+                              se_2050.Commercial + se_2050.Industrial + \
+                              se_2050.Institutional + se_2050.K12 + se_2050.Retail + \
                               se_2050.Special_Retail + se_2050.Special_Commercial
 
 dat = pd.concat([se_2015, se_2020, se_2030, se_2050])
@@ -74,7 +82,7 @@ dat = dat.query('TAZ < 961')
 
 
 # Make Radio Button list #
-dat.rename(columns={'HH_IncludingGQ': 'Total Households (Including GQ)'}, \
+dat.rename(columns={'HH': 'Total Households (Excluding GQ)'}, \
            inplace=True)
 
 # =============================================================================
@@ -92,7 +100,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 app.title ='CCPRC Land Use'
 
-land_use = ["Total Households (Including GQ)", "Total Employment"]
+land_use = ["Total Households (Excluding GQ)", "Total Employment"]
 
 app.layout = dbc.Container([
     dbc.Row(dbc.Col(html.H1(children='CCPRC Land Use Visualizer'))),
@@ -104,7 +112,7 @@ app.layout = dbc.Container([
     ,
         labelStyle={'display': 'inline-block'}
     )),
-    dbc.Row(dbc.Col(dcc.Graph(id="choropleth",style={'width': '90vh', 'height': '90vh'}))),
+    dbc.Row(dbc.Col(dcc.Graph(id="choropleth",style={'width': '90vh', 'height': '90vh'})))
 ])
 
 @app.callback(
