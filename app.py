@@ -104,7 +104,7 @@ app.layout = dbc.Container([
     ,
         labelStyle={'display': 'inline-block'}
     ),
-    dbc.Col(dcc.Graph(id="choropleth")),
+    dbc.Col(dcc.Graph(id="choropleth"), width=10, style={"height": "100%"}),
 ])
 
 @app.callback(
@@ -117,7 +117,7 @@ def display_choropleth(value):
         animation_frame='Year',
         color_continuous_scale='Oranges',
         mapbox_style='open-street-map',
-        opacity = 0.7,
+        opacity = 0.5,
         center={"lat": 44.4, "lon": -73.2}, zoom=10)
     
     fig.update_layout(
