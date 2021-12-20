@@ -98,12 +98,12 @@ token = open("Data/.mapbox_token").read()
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
-app.title ='CCPRC Land Use'
+app.title ='CCRPC Land Use'
 
 land_use = ["Total Households (Excluding GQ)", "Total Employment"]
 
 app.layout = dbc.Container([
-    dbc.Row(dbc.Col(html.H1(children='CCPRC Land Use Visualizer'))),
+    dbc.Row(dbc.Col(html.H1(children='CCRPC Land Use Visualizer'))),
     dbc.Row(dbc.Col(html.H3("Land Use Variable:"))),
     dbc.Row(dbc.RadioItems(
         id='radio_button', 
