@@ -94,7 +94,7 @@ app.title('CCPRC Land Use')
 land_use = ["Total Households (Including GQ)", "Total Employment"]
 
 app.layout = html.Div([
-    html.H1(children='CCPRC Land Use')
+    html.H1(children='CCPRC Land Use'),
     html.P("Land Use Variable:"),
     dcc.RadioItems(
         id='radio_button', 
