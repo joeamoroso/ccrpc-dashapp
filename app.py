@@ -113,7 +113,7 @@ app.layout = dbc.Container([
         labelStyle={'display': 'inline-block'}
     )),
     dbc.Row(
-        dbc.Col(dcc.Graph(id="choropleth"), style={"height": "90%"}))
+        dbc.Col(dcc.Graph(id="choropleth")))
 ],
 style={"height": "100vh"})
 
@@ -128,13 +128,20 @@ def display_choropleth(value):
         color_continuous_scale='Oranges',
         mapbox_style='open-street-map',
         opacity = 0.5,
-        center={"lat": 44.475959, "lon": -73.210382}, zoom=10,
+        center={"lat": 44.475959, "lon": -73.210382}, zoom=12,
         height =700)
-    
-    fig.update_geos(fitbounds="locations", visible=False)
+
     fig.update_layout(
         margin={"r":0,"t":0,"l":0,"b":0},
         mapbox_accesstoken=token)
+    
+    fig.add_scattergeo(
+        geojson=vt_taz,
+        location=dat['TAZ'],
+        text=dat['TAZ'],
+        featureidkey='properties.TAZ',
+        mode='text',
+        showlegend=False)
 
     return fig
 
