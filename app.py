@@ -137,7 +137,7 @@ def display_choropleth(value):
     
     fig.add_scattergeo(
         geojson=vt_taz,
-        location=dat['TAZ'],
+        locations=dat['TAZ'],
         text=dat['TAZ'],
         featureidkey='properties.TAZ',
         mode='text',
