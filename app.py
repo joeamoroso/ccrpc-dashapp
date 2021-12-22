@@ -134,15 +134,7 @@ def display_choropleth(value):
     fig.update_layout(
         margin={"r":0,"t":0,"l":0,"b":0},
         mapbox_accesstoken=token)
-    
-    fig.add_scattergeo(
-        geojson=vt_taz,
-        locations=dat['TAZ'],
-        text=dat['TAZ'],
-        featureidkey='properties.TAZ',
-        mode='text',
-        showlegend=False)
-
+        
     return fig
 
 if __name__ == '__main__':
