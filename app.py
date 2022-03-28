@@ -88,25 +88,24 @@ def preprocessdata():
     se_2015['HH Percent Change From 2015'] = 0
     se_2020 = se_2020.merge(se_2015[['TAZ', 'HH']], how='left', on='TAZ')
     se_2020['HH Percent Change From 2015'] = np.where(se_2020['HH_y'] > 0, round((se_2020['HH_x'] - se_2020['HH_y']) / se_2020['HH_y'] * 100, 1), 0)
-    se_2020['HH Log Percent Change From 2015'] = np.log(se_2020['HH Percent Change From 2015'] + 0.00001)
+    se_2020['HH Change From 2015'] = se_2020['HH_x'] - se_2020['HH_y']
     se_2030 = se_2030.merge(se_2015[['TAZ', 'HH']], how='left', on='TAZ')
     se_2030['HH Percent Change From 2015'] = np.where(se_2030['HH_y'] > 0,round((se_2030['HH_x'] - se_2030['HH_y']) / se_2030['HH_y'] * 100, 1), 0)
-    se_2030['HH Log Percent Change From 2015'] = np.log(se_2030['HH Percent Change From 2015'] + 0.00001)
+    se_2030['HH Change From 2015'] = se_2030['HH_x'] - se_2030['HH_y']
     se_2050 = se_2050.merge(se_2015[['TAZ', 'HH']], how='left', on='TAZ')
     se_2050['HH Percent Change From 2015'] = np.where(se_2050['HH_y'] > 0,round((se_2050['HH_x'] - se_2050['HH_y']) / se_2050['HH_y'] * 100, 1), 0)
-    se_2050['HH Log Percent Change From 2015'] = np.log(se_2050['HH Percent Change From 2015'] + 0.00001)
-
+    se_2050['HH Change From 2015'] = se_2050['HH_x'] - se_2050['HH_y']
 
     se_2015['Total Employment Percent Change From 2015'] = 0
     se_2020 = se_2020.merge(se_2015[['TAZ', 'Total Employment']], how='left', on='TAZ')
     se_2020['Total Employment Percent Change From 2015'] = np.where(se_2020['Total Employment_y'] > 0, round((se_2020['Total Employment_x'] - se_2020['Total Employment_y']) / se_2020['Total Employment_y'] * 100, 1), 0)
-    se_2020['Total Employment Log Percent Change From 2015'] = np.log(se_2020['Total Employment Percent Change From 2015'] + 0.00001)
+    se_2020['Total Employment Change From 2015'] = se_2020['Total Employment_x'] - se_2020['Total Employment_y']
     se_2030 = se_2030.merge(se_2015[['TAZ', 'Total Employment']], how='left', on='TAZ')
     se_2030['Total Employment Percent Change From 2015'] = np.where(se_2030['Total Employment_y'] > 0,round((se_2030['Total Employment_x'] - se_2030['Total Employment_y']) / se_2030['Total Employment_y'] * 100, 1), 0)
-    se_2030['Total Employment Log Percent Change From 2015'] = np.log(se_2030['Total Employment Percent Change From 2015'] + 0.00001)
+    se_2030['Total Employment Change From 2015'] = se_2030['Total Employment_x'] - se_2030['Total Employment_y']
     se_2050 = se_2050.merge(se_2015[['TAZ', 'Total Employment']], how='left', on='TAZ')
     se_2050['Total Employment Percent Change From 2015'] = np.where(se_2050['Total Employment_y'] > 0,round((se_2050['Total Employment_x'] - se_2050['Total Employment_y']) / se_2050['Total Employment_y'] * 100, 1), 0)
-    se_2050['Total Employment Log Percent Change From 2015'] = np.log(se_2050['Total Employment Percent Change From 2015'] + 0.00001)
+    se_2050['Total Employment Change From 2015'] = se_2020['Total Employment_x'] - se_2050['Total Employment_y']
 
     dat = pd.concat([se_2020, se_2030, se_2050])
     # Make Radio Button list #
@@ -180,7 +179,8 @@ def display_choropleth(value):
         color_continuous_scale='Oranges',
         mapbox_style='open-street-map',
         hover_name= 'TAZ',
-        hover_data = ['HH Percent Change From 2015','Total Employment Percent Change From 2015'],
+        hover_data = ['HH Percent Change From 2015','Total Employment Percent Change From 2015',
+                      'HH Change From 2015','Total Employment Change From 2015'],
         opacity = 0.6,
         center={"lat": 44.475959, "lon": -73.210382}, zoom=12,
         height =700)
